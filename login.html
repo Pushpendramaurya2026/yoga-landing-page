@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f6f2f7;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-box {
+      width: 90%;
+      max-width: 400px;
+      background: white;
+      padding: 35px;
+      border-radius: 15px;
+      text-align: center;
+
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .login-box h1 {
+      color: #9a4b7b;
+      margin-bottom: 10px;
+    }
+
+    .login-box p {
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+
+      border: 1px solid #ddd;
+      border-radius: 8px;
+
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #9a4b7b;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+
+      border: none;
+      border-radius: 8px;
+
+      background: #9a4b7b;
+      color: white;
+
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    #error {
+      color: red;
+      margin-top: 15px;
+      word-break: break-word;
+    }
+
+    #success {
+      color: green;
+      margin-top: 15px;
+    }
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="login-box">
+
+    <h1>🧘 Admin Login</h1>
+
+    <p>Yoga Booking Dashboard</p>
+
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Username"
+      autocomplete="username"
+    >
+
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    >
+
+
+    <button type="button" onclick="login()">
+      Login
+    </button>
+
+
+    <p id="error"></p>
+
+    <p id="success"></p>
+
+  </div>
+
+
+  <script>
+
+    async function login() {
+
+      const username =
+        document.getElementById("username").value.trim();
+
+      const password =
+        document.getElementById("password").value;
+
+      const errorBox =
+        document.getElementById("error");
+
+      const successBox =
+        document.getElementById("success");
+
+
+      // Clear old messages
+
+      errorBox.textContent = "";
+      successBox.textContent = "";
+
+
+      // Empty fields check
+
+      if (!username || !password) {
+
+        errorBox.textContent =
+          "❌ Username aur password dono bhariye.";
+
+        return;
+      }
+
+
+      try {
+
+        console.log("Sending login request...");
+
+
+        const response = await fetch("/login", {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            username: username,
+            password: password
+          })
+
+        });
+
+
+        const text = await response.text();
+
+
+        console.log("Status:", response.status);
+        console.log("Response:", text);
+
+
+        // Server error
+
+        if (!response.ok) {
+
+          errorBox.textContent =
+            "❌ Error " +
+            response.status +
+            ": " +
+            text;
+
+          return;
+        }
+
+
+        // JSON convert
+
+        let result;
+
+        try {
+
+          result = JSON.parse(text);
+
+        } catch (e) {
+
+          errorBox.textContent =
+            "❌ Server ne valid response nahi diya.";
+
+          return;
+        }
+
+
+        // Login successful
+
+        if (result.success === true) {
+
+          successBox.textContent =
+            "✅ Login successful!";
+
+          setTimeout(function () {
+
+            window.location.href =
+              "/admin.html";
+
+          }, 500);
+
+        }
+
+        // Wrong username/password
+
+        else {
+
+          errorBox.textContent =
+            "❌ Wrong username or password.";
+
+        }
+
+
+      } catch (error) {
+
+        console.error("Login Error:", error);
+
+        errorBox.textContent =
+          "❌ Connection error: " +
+          error.message;
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>

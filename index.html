@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />  <link rel="stylesheet" href="styles.css" />  <title>Yoga Landing Page</title>
+</head><body>  <!-- NAVBAR -->  <nav>
+    <div class="nav__header">  <div class="nav__logo">
+    <a href="#home">
+      <img src="logo-white.png" alt="logo" class="logo-white" />
+      <img src="logo-dark.png" alt="logo" class="logo-dark" />
+    </a>
+  </div>
+
+  <div class="nav__menu__btn" id="menu-btn">
+    <i class="ri-menu-4-line"></i>
+  </div>
+
+</div>
+
+<ul class="nav__links" id="nav-links">
+
+  <li><a href="#home">HOME</a></li>
+
+  <li><a href="#service">SERVICE</a></li>
+
+  <li><a href="#portfolio">PORTFOLIO</a></li>
+
+  <li><a href="#contact">CONTACT US</a></li>
+
+  <!-- ADMIN LOGIN -->
+  <li>
+    <a href="/login.html" class="admin-login-btn">
+      ADMIN LOGIN
+    </a>
+  </li>
+
+</ul>
+
+  </nav>  <!-- HOME / HERO SECTION -->  <header id="home"><div class="header__content">
+
+  <h2>JOIN OUR CLUB</h2>
+
+  <h1>
+    Yoga For Your<br />
+    Healthy Life
+  </h1>
+
+  <p>
+    Join our club and discover the true benefits of yoga.
+    Enhance flexibility, reduce stress, and embrace a healthier,
+    balanced lifestyle with guided sessions made for everyone.
+  </p>
+
+  <div class="header__btn">
+    <a
+      href="javascript:void(0)"
+      class="book-btn"
+      id="bookNowBtn"
+    >
+      BOOK NOW
+    </a>
+  </div>
+
+  <ul class="header__socials">
+
+    <li>
+      <a href="#">
+        <i class="ri-facebook-fill"></i>
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="ri-twitter-fill"></i>
+      </a>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="ri-instagram-line"></i>
+      </a>
+    </li>
+
+  </ul>
+
+</div>
+
+
+<div class="header__image">
+  <img src="header.png" alt="Yoga" />
+</div>
+
+  </header>  <!-- SERVICES -->  <section id="service" class="service"><h2>Our Services</h2>
+
+<p>
+  Explore our yoga programs designed for a healthier lifestyle.
+</p>
+
+<div class="service__cards">
+
+  <div>
+    <h3>Yoga Classes</h3>
+    <p>
+      Improve flexibility and overall wellness.
+    </p>
+  </div>
+
+  <div>
+    <h3>Meditation</h3>
+    <p>
+      Relax your mind with guided meditation.
+    </p>
+  </div>
+
+  <div>
+    <h3>Fitness Training</h3>
+    <p>
+      Build a healthy and active routine.
+    </p>
+  </div>
+
+</div>
+
+  </section>  <!-- PROGRAMS -->  <section id="portfolio" class="portfolio"><h2>Our Programs</h2>
+
+<p>
+  Discover our popular wellness programs.
+</p>
+
+<div class="portfolio__cards">
+
+  <div>Morning Yoga</div>
+
+  <div>Mindfulness</div>
+
+  <div>Fitness & Wellness</div>
+
+</div>
+
+  </section>  <!-- CONTACT -->  <section id="contact" class="contact"><h2>Contact Us</h2>
+
+<p>
+  Ready to start your healthy journey?
+</p>
+
+<a href="mailto:engineermauryajii2027@gmail.com">
+  Get In Touch
+</a>
+
+  </section>  <!-- BOOKING POPUP -->  <div id="bookingModal" class="booking-modal"><div class="booking-box">
+
+  <button
+    class="close-btn"
+    id="closeBooking"
+  >
+    &times;
+  </button>
+
+  <h2>Book Your Yoga Session</h2>
+
+  <p>
+    Fill in your details to book a session.
+  </p>
+
+  <form
+    id="bookingForm"
+    action="/book"
+    method="POST"
+  >
+
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+    >
+
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+    >
+
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Your Phone"
+      required
+    >
+
+    <select name="program" required>
+
+      <option value="">
+        Select Program
+      </option>
+
+      <option value="Yoga Classes">
+        Yoga Classes
+      </option>
+
+      <option value="Meditation">
+        Meditation
+      </option>
+
+      <option value="Fitness Training">
+        Fitness Training
+      </option>
+
+    </select>
+
+    <button type="submit">
+      Submit Booking
+    </button>
+
+  </form>
+
+  <p id="bookingMessage"></p>
+
+</div>
+
+  </div>  <!-- JAVASCRIPT -->  <script src="https://unpkg.com/scrollreveal"></script>  <script src="main.js"></script></body>
+</html>
